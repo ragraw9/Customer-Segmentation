@@ -1,58 +1,25 @@
-# Customer Segmentation and Analysis
+### Customer Segmentation (Clustering) Methodology
 
-## Overview
-An analysis of customer behaviors and preferences by leveraging advanced analytics on customer data.  
+#### Summary
 
-## Prerequisites
-Python 3.8+
-Jupyter Notebook or any Python IDE
+This project aims to analyze customer behavior and segment customers into distinct groups to enable targeted marketing strategies.
 
-## Installation
-Clone the repository and install the required Python packages
+#### Data Preprocessing and Feature Engineering
+The dataset, loaded into a pandas DataFrame, is first inspected for missing values using visualizations from the `missingno` library. Missing values are dropped, and duplicate rows are checked and removed.
 
-## Dataset: 
+Feature engineering involves creating new features such as `Age`, derived from `Year_Birth`, and `Spent`, calculated by summing various spending columns. Simplifications and transformations are applied to other columns: `Marital_Status` is recoded to `Living_With` to indicate partnership status, and `Children` is derived from `Kidhome` and `Teenhome`. `Family_Size` and `Is_Parent` are created to further describe household characteristics, and education levels are grouped into three categories. Redundant columns are dropped to streamline the dataset.
 
-### People
-**ID:** Customer's unique identifier
-**Year_Birth:** Customer's birth year
-**Education:** Customer's education level
-**Marital_Status:** Customer's marital status
-**Income:** Customer's yearly household income
-**Kidhome:** Number of children in customer's household
-**Teenhome:** Number of teenagers in customer's household
-**Dt_Customer:** Date of customer's enrollment with the company
-**Recency:** Number of days since customer's last purchase
-**Complain:** 1 if the customer complained in the last 2 years, 0 otherwise
+#### Exploratory Data Analysis (EDA)
+EDA involves generating summary statistics and visualizing relationships between features. Scatter plots, histograms, and pie charts are used to explore distributions and correlations. Outliers in `Age`, `Income`, and `Spent` are detected using box plots and the IQR method, with extreme outliers removed to improve model performance.
 
-### Products
+#### Dimensionality Reduction and Clustering
+The dataset is scaled using `StandardScaler` to normalize features. Principal Component Analysis (PCA) reduces the dataset to three principal components, retaining most of the variance and simplifying the data.
 
-**MntWines:** Amount spent on wine in last 2 years
-**MntFruits:** Amount spent on fruits in last 2 years
-**MntMeatProducts:** Amount spent on meat in last 2 years
-**MntFishProducts:** Amount spent on fish in last 2 years
-**MntSweetProducts:** Amount spent on sweets in last 2 years
-**MntGoldProds:** Amount spent on gold in last 2 years
+The optimal number of clusters is determined using the Elbow Method with `KElbowVisualizer`, identifying four clusters. Agglomerative Clustering segments the data, and the results are visualized in a 3D plot.
 
-### Promotion
-**NumDealsPurchases:** Number of purchases made with a discount
-**AcceptedCmp1:** 1 if customer accepted the offer in the 1st campaign, 0 otherwise
-**AcceptedCmp2:** 1 if customer accepted the offer in the 2nd campaign, 0 otherwise
-**AcceptedCmp3:** 1 if customer accepted the offer in the 3rd campaign, 0 otherwise
-**AcceptedCmp4:** 1 if customer accepted the offer in the 4th campaign, 0 otherwise
-**AcceptedCmp5:** 1 if customer accepted the offer in the 5th campaign, 0 otherwise
-**Response:** 1 if customer accepted the offer in the last campaign, 0 otherwise
-
-### Place
-**NumWebPurchases:** Number of purchases made through the company’s website
-**NumCatalogPurchases:** Number of purchases made using a catalogue
-**NumStorePurchases:** Number of purchases made directly in stores
-**NumWebVisitsMonth:** Number of visits to company’s website in the last month
-
-
-## Process
-
-**Data Cleaning:** Handling missing values and outliers.
-**Feature Engineering:** Creating new features to better understand customer behaviors.
-**Customer Segmentation:** Using clustering techniques to segment customers.
-**Data Visualization:** Visualizing data and clustering results to gain insights.
-
+#### Cluster Analysis and Customer Profiling
+Clusters are analyzed based on various features, including spending patterns, income, and responses to promotions. Visualizations such as count plots and scatter plots illustrate the distribution and characteristics of each cluster. Detailed profiles are created for each cluster, highlighting key demographic and behavioral traits:
+- **Cluster 0**: Typically young parents with small families and low spending.
+- **Cluster 1**: Older parents, moderate family size, mixed spending patterns.
+- **Cluster 2**: High-income, high-spending non-parents.
+- **Cluster 3**: Older parents with larger families, moderate income, and spending.
