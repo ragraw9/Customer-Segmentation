@@ -18,8 +18,16 @@ The dataset is scaled using `StandardScaler` to normalize features. Principal Co
 The optimal number of clusters is determined using the Elbow Method with `KElbowVisualizer`, identifying four clusters. Agglomerative Clustering segments the data, and the results are visualized in a 3D plot.
 
 #### Cluster Analysis and Customer Profiling
-Clusters are analyzed based on various features, including spending patterns, income, and responses to promotions. Visualizations such as count plots and scatter plots illustrate the distribution and characteristics of each cluster. Detailed profiles are created for each cluster, highlighting key demographic and behavioral traits:
-- **Cluster 0**: Typically young parents with small families and low spending.
-- **Cluster 1**: Older parents, moderate family size, mixed spending patterns.
-- **Cluster 2**: High-income, high-spending non-parents.
-- **Cluster 3**: Older parents with larger families, moderate income, and spending.
+**Cluster 0:** Low Spending, Low Income, Young Parents
+**Strategy:** Offer budget-friendly products and promotions targeting young families.
+**Marketing:** Highlight discounts on essential household items and family-friendly events.
+**Cluster 1:** Average Spending, Average Income, Older Parents with Teenagers
+**Strategy:** Introduce mid-range products and value packs tailored to larger families.
+**Marketing:** Promote back-to-school offers, family vacations, and parenting resources.
+**Cluster 2:** High Spending, High Income, Non-Parents or Small Families
+**Strategy:** Focus on premium products and exclusive experiences.
+**Marketing:** Use targeted campaigns emphasizing luxury, quality, and exclusivity.
+**Cluster 3:** Low Spending, Average Income, Older Parents
+**Strategy:**  Provide loyalty programs and bundled deals to increase spending.
+**Marketing:** Encourage repeat purchases through personalized offers and senior discounts.
+
